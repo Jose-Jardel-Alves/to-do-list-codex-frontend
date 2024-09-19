@@ -1,0 +1,34 @@
+
+.todo{
+    background-color: #DFEBE6;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.buttons{
+    display: flex;
+    height: 30px;
+    align-items: center;
+
+}
+
+button{
+    margin: 2px;
+}
+
+#complete{
+    background-color: #5cb85c;
+}
+
+#delete{
+    background-color: #E33B65;
+}
+
+#edit{
+    background-color: #B35BAD;
+}
+
