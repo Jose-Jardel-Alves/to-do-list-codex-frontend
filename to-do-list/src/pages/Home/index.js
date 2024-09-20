@@ -56,7 +56,7 @@
             setToDos(newToDos);   
         }
 
-        const editToDo = (id, text, category) => {
+        const updateToDo = (id, text, category) => {
             const newToDos = toDos.map((toDo) => {
                 if(toDo.id === id){
                     return {
@@ -74,7 +74,7 @@
                 <div className="todo-list">
                     {toDos.map((toDo) => {
                         return (
-                            <ToDo key={toDo.id} toDo={toDo} completeToDo={completeToDo} removeToDo={removeToDo} editToDo={editToDo} />
+                            <ToDo key={toDo.id} toDo={toDo} completeToDo={completeToDo} removeToDo={removeToDo} updateToDo={updateToDo} />
                         )
                     })}
                 </div>

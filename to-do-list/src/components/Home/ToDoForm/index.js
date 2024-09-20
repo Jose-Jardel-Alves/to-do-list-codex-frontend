@@ -8,7 +8,6 @@ const ToDoForm = ({addToDo}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(value, category)
         if(!value || !category)
             return 
 
