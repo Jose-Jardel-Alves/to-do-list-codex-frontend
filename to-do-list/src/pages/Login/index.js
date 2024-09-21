@@ -36,34 +36,34 @@ const Login = () => {
     };
 
     const submit = () => {
-    if (validateForm()) {
-        api.post(
-            "/user/signIn",
-            { email: email.value, password: password.value },
-            {
-            headers: { "Content-Type": "application/json" },
-            }
-        )
-        .then((response) => {
-            const token = response.data.token;
-            // salvando o token do usuario no localStorage
-            localStorage.setItem("token", token);
-            // salvando os dados do usuario
-            localStorage.setItem("user", JSON.stringify(response));
-            // redirecionando para tela Home
-            PaymentResponse.history.push("/home");
-        })
-        .catch((error) => {
-            console.log(error.response);
-            const msg = error.response.data;
+        if (validateForm()) {
+            api.post(
+                "/login",
+                { email: email.value, password: password.value },
+                {
+                headers: { "Content-Type": "application/json" },
+                }
+            )
+            .then((response) => {
+                const token = response.data.token;
+                // salvando o token do usuario no localStorage
+                localStorage.setItem("token", token);
+                // salvando os dados do usuario
+                localStorage.setItem("user", JSON.stringify(response));
+                // redirecionando para tela Home
+                //.history.push("/home");
+            })
+            .catch((error) => {
+                console.log(error.response);
+                const msg = error.response.data;
 
-            // exibindo mensagem de erro que o backend retorna
-            if (msg.indexOf("Email não cadastrado") !== -1)
-            setEmail({ ...email, invalidity: "Email não cadastrado" });
-            else if (msg === "Senha inválida")
-            setPassword({ ...password, invalidity: msg });
-        });
-    }
+                // exibindo mensagem de erro que o backend retorna
+                if (msg.indexOf("Email não cadastrado") !== -1)
+                setEmail({ ...email, invalidity: "Email não cadastrado" });
+                else if (msg === "Senha inválida")
+                setPassword({ ...password, invalidity: msg });
+            });
+        }
     
     };  
     
@@ -76,7 +76,6 @@ const Login = () => {
                 <InvalidityMsg msg={email.invalidity} />
                 <SignInput typeInput ="password" label = "Senha: " handleChange={changePassword}/>
                 <InvalidityMsg msg={password.invalidity} />
-                <a href="/">Esqueceu sua senha?</a>
                 <SignButton label ="ENTRAR" handleClicked={submit}/>            
                 <a href="/signup">Cadastre-se</a>
             </div>

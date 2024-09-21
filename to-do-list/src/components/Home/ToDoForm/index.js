@@ -3,17 +3,17 @@ import "./styles.css"
 
 const ToDoForm = ({addToDo}) => {
 
-    const [value, setValue] = useState("");
-    const [category, setCategory] = useState("");
+    const [title, setTitle] = useState("");
+    const [body, setBody] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!value || !category)
+        if(!title || !body)
             return 
 
-        addToDo(value, category)
-        setValue("")
-        setCategory("")
+        addToDo(title, body)
+        setTitle("")
+        setBody("")
     }
 
 
@@ -21,8 +21,8 @@ const ToDoForm = ({addToDo}) => {
         <div className='todoform'>
             <h2>Adicione uma nova tarefa</h2>
             <form onSubmit={handleSubmit}>
-                <input type='text' placeholder='Digite o título da tarefa' value= {value} onChange={(e) => setValue(e.target.value)}/>
-                <input type='text' placeholder='Digite a categoria da tarefa' value={category} onChange={(e) => setCategory(e.target.value)}/>
+                <input type='text' placeholder='Digite o título da tarefa' value= {title} onChange={(e) => setTitle(e.target.value)}/>
+                <input type='text' placeholder='Digite a tarefa' value={body} onChange={(e) => setBody(e.target.value)}/>
                 <button type='submit'>Adicionar tarefa</button>
             </form>
         </div>

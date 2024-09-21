@@ -3,43 +3,43 @@ import "./styles.css"
 
 const EditToDo = ({setEditVisible, toDo, updateToDo}) => {
 
-    const [newText, setNewText] = useState("")
-    const [newCategory, setNewCategory] = useState("")
+    const [newTitle, setNewTitle] = useState("")
+    const [newBody, setNewBody] = useState("")
 
 
-    const handleText = (e) =>{
+    const handleTitle = (e) =>{
         if(e.target.value.trim === ""){
-            setNewText("")
+            setNewTitle("")
         }
     }
 
-    const handleCategory = (e) =>{
+    const handleBody = (e) =>{
         if(e.target.value.trim === ""){
-            setNewCategory("")
+            setNewBody("")
         }
     }
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let text = toDo.text
-        let category = toDo.category
-        if (newText){
-            text = newText
+        let title = toDo.title
+        let body = toDo.body
+        if (newTitle){
+            title = newTitle
         }
-        if (newCategory){
-            category = newCategory
+        if (newBody){
+            body = newBody
         }
 
         setEditVisible(false)
-        updateToDo(toDo.id, text, category)
+        updateToDo(toDo.id, title, body)
 
     };  
     return (
         <form className='editToDo' onSubmit={handleSubmit}>
             <h4>Edite a tarefa: </h4>
-            <input type='text' placeholder='Digite o novo texto da tarefa' onChange={(e) => setNewText(e.target.value)} onBlur={handleText}/>
-            <input type='text' placeholder='Digite a nova categoria da tarefa' onChange={(e) => setNewCategory(e.target.value)} onBlur={handleCategory}></input>
+            <input type='text' placeholder='Edite o título da tarefa' onChange={(e) => setNewTitle(e.target.value)} onBlur={handleTitle}/>
+            <input type='text' placeholder='Edite a tarefa' onChange={(e) => setNewBody(e.target.value)} onBlur={handleBody}></input>
             <button onClick={handleSubmit}>Concluir</button>
         </form>
     )

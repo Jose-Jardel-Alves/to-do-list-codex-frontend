@@ -12,8 +12,8 @@ const ToDo = ({toDo, completeToDo, removeToDo, updateToDo}) => {
   return (
     <div className="todo">
         <div className="content" style={{textDecoration: toDo.isCompleted ? "line-through" : ""}}>
-            <p><b>Tarefa:</b> {toDo.text}</p>
-            <p className="category">(<b>Categoria:</b> {toDo.category})</p>
+            <p><b>Título:</b> {toDo.title}</p>
+            <p className="toDO-BODY">(<b>Tarefa:</b> {toDo.body})</p>
             {editVisible && <EditToDo setEditVisible = {setEditVisible} toDo={toDo} updateToDo={updateToDo}/>}
         </div>
         {!editVisible &&

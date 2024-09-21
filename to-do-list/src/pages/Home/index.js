@@ -7,31 +7,32 @@
         const [toDos, setToDos] = useState([
             {
                 id: '1',
-                text: "Minha primeira tarefa",
-                category: "Pessoal",
+                title: "Minha primeira tarefa",
+                body: "Pessoal",
                 isCompleted: false
             },
             {
                 id: "2",
-                text: "Academia",
-                category: "Pessoal",
+                title: "Academia",
+                body: "Pessoal",
                 isCompleted: false
             },
             {
                 id: "3",
-                text: "Fazer o projeto to do list",
-                category: "Estudos",
+                title: "Fazer o projeto to do list",
+                body: "Estudos",
                 isCompleted: false
             },
         ]);
+        
 
-        const addToDo = (text, category) => {
+        const addToDo = (title, body) => {
             const newToDos = [
                 ...toDos, 
                 {
                     id: (toDos.length + 1).toString(),
-                    text,
-                    category,
+                    title,
+                    body,
                     isCompleted: false
                 }
             ]
@@ -56,11 +57,11 @@
             setToDos(newToDos);   
         }
 
-        const updateToDo = (id, text, category) => {
+        const updateToDo = (id, title, body) => {
             const newToDos = toDos.map((toDo) => {
                 if(toDo.id === id){
                     return {
-                        ...toDo, text: text, category: category
+                        ...toDo, title: title, body: body
                     }
                 }
                 else return toDo
