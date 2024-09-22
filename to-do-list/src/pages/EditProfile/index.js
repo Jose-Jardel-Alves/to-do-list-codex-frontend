@@ -30,7 +30,7 @@ const EditProfile = () => {
         try {
             console.log(name, gender, idade, senha, novaSenha);
             await api.put(`/api/v1/atualizaUser/${userId}`, {
-                name: "marcos1",
+                name: name,
                 gender: gender,
                 idade: idade,
                 email: user.email, 
