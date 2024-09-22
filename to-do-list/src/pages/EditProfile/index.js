@@ -7,7 +7,7 @@ import "./styles.css";
 
 const EditProfile = () => {
     const { userId } = useParams();
-    const { user } = useAuth();
+    const { user, setUser } = useAuth();
     
     
     useEffect(() => {
@@ -37,6 +37,12 @@ const EditProfile = () => {
                 senhaAtual: senha,
                 novaSenha: novaSenha
             });
+            setUser({
+                name: name,
+                gender: gender,
+                idade: idade
+            })
+
             window.alert("Perfil atualizado com sucesso!");
         } catch (error) {
             console.error(error);
