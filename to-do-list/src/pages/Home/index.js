@@ -5,6 +5,7 @@
     import "./styles.css"
     import api from "../../service";
     import { useAuth } from '../../context/AuthContext';
+import Menu from "../../components/Menu";
 
 
     const Home = () => {
@@ -12,26 +13,7 @@
         const { userId } = useParams();
         const {user} = useAuth()
 
-        const [toDos, setToDos] = useState([
-            {
-                id: '1',
-                title: "Minha primeira tarefa",
-                body: "Pessoal",
-                isCompleted: false
-            },
-            {
-                id: "2",
-                title: "Academia",
-                body: "Pessoal",
-                isCompleted: false
-            },
-            {
-                id: "3",
-                title: "Fazer o projeto to do list",
-                body: "Estudos",
-                isCompleted: false
-            },
-        ]);
+        const [toDos, setToDos] = useState([ ]);
         
         useEffect(() => {
             loadToDos();
@@ -153,6 +135,8 @@
         }
 
         return (
+            <div>
+            <Menu userId={userId}/>
             <div className="home">
                 <h1>Minhas tarefas</h1>
                 <div className="todo-list">
@@ -164,6 +148,7 @@
                 </div>
                 <ToDoForm addToDo={addToDo}/>
             </div>
+        </div>
         )
     }
 

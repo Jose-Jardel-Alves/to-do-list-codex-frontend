@@ -1,0 +1,15 @@
+.menu {
+    background-color: #8E8CAD;
+    padding: 10px;
+    
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu li {
+    display: inline;
+    margin-right: 15px;
+}
