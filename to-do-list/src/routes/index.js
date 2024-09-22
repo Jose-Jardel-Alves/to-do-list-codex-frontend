@@ -5,11 +5,12 @@ import SignUp from "../pages/SignUp"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const AppRoutes = () => {
+
     return (
         <Router>
             <Routes>
                 <Route path = "/" element = {<Login/>}/>
-                <Route path="/home" element={<Home/>}/>
+                <Route path="/home/:userId" element={<Home/>} />
                 <Route path="/signup" element={<SignUp/>}/>
             </Routes>
         </Router>

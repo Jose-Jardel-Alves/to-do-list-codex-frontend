@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css"
+import api from "../../service";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
 
@@ -12,7 +14,9 @@ const SignUp = () => {
         confirmPassword: ""
     })
 
-    const validForm = (e) => {
+    const navigate = useNavigate();
+
+    const validForm = async (e) => {
 
         e.preventDefault()
 
@@ -23,7 +27,28 @@ const SignUp = () => {
             return window.alert("As senhas não coincidem");
         }
 
-        window.alert("AQUI VAI REDIRECIONAR PARA A HOME")
+        try{
+
+            await api.post("/api/v1/registrar",
+                {
+                name: handleForm.name,
+                gender: handleForm.gender,
+                idade: handleForm.age,
+                email: handleForm.email,
+                senha: handleForm.password     
+                }
+            );
+            
+            //const token = response.data.token;
+            //localStorage.setItem("token", token);
+            //localStorage.setItem("user", JSON.stringify(response));
+            
+            navigate("/");
+        }
+        catch(error){
+            console.log(error);
+            window.alert("Erro ao realizar o cadastro");
+        }   
     }
 
     return (
